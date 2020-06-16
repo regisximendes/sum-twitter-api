@@ -10,7 +10,7 @@ module.exports.getUserTimeline = async (application, req, res) => {
     });
 
     var params = { screen_name: 'nodejs' };
-    client.get('statuses/home_timeline', params, function (error, tweets, response) {
+    client.get('statuses/home_timeline', function (error, tweets, response) {
 
         if (!error) {
             return res.status(201).send(tweets)
