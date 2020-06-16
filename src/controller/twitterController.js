@@ -11,32 +11,11 @@ module.exports.getUserTimeline = async (application, req, res) => {
 
     var params = { screen_name: 'nodejs' };
     client.get('statuses/home_timeline', params, function (error, tweets, response) {
+
         if (!error) {
-            console.log(tweets);
+            return res.status(201).send(tweets)
+        } else {
+            return res.status(404).send({ message: 'tweets not found' })
         }
     });
-}
-
-module.exports.getUserById = async (application, req, res) => {
-
-    const repository = application.src.repository.userRepository;
-    try {
-        const user = await repository.getUserById({
-            userId: req.body.userId
-        });
-
-        if (user) {
-            return res.status(201).send(user)
-        }
-        else {
-            return res.status(404).send({ message: 'User not found' })
-        }
-
-    } catch (error) {
-        console.log(error);
-        res.status(400).send({
-            message: 'Server Error',
-            error: error
-        })
-    }
 }
