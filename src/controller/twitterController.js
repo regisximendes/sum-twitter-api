@@ -1,13 +1,14 @@
 var Twitter = require('twitter');
 
-var client = new Twitter({
-    consumer_key: 'QTeByt0VCAcmGiPcF7i8UtZMJ',
-    consumer_secret: 'FAtruyopS4husKeSMM2wPGsoTcSpH8X2fhLtRYQUywKFr9mtN5',
-    access_token_key: '1249872483915911168-t2x8lSoXK38oGDct32wfKDEPz3Lc1I',
-    access_token_secret: 'NalRG2jxD0434wod699HRLuEaNtv5zBMzXFZWfn1YGS4t'
-});
 
 module.exports.getUserTimeline = async (application, req, res) => {
+
+    var client = new Twitter({
+        consumer_key: 'QTeByt0VCAcmGiPcF7i8UtZMJ',
+        consumer_secret: 'FAtruyopS4husKeSMM2wPGsoTcSpH8X2fhLtRYQUywKFr9mtN5',
+        access_token_key: req.body.token,
+        access_token_secret: req.body.secret
+    });
 
     client.get('statuses/home_timeline', function (error, tweets, response) {
 
@@ -20,6 +21,13 @@ module.exports.getUserTimeline = async (application, req, res) => {
 }
 
 module.exports.getUserHome = async (application, req, res) => {
+
+    var client = new Twitter({
+        consumer_key: 'QTeByt0VCAcmGiPcF7i8UtZMJ',
+        consumer_secret: 'FAtruyopS4husKeSMM2wPGsoTcSpH8X2fhLtRYQUywKFr9mtN5',
+        access_token_key: req.body.token,
+        access_token_secret: req.body.secret
+    });
 
     var params = {screen_name:  req.params.username};
 
@@ -34,6 +42,13 @@ module.exports.getUserHome = async (application, req, res) => {
 }
 
 module.exports.search = async (application, req, res) => {
+
+    var client = new Twitter({
+        consumer_key: 'QTeByt0VCAcmGiPcF7i8UtZMJ',
+        consumer_secret: 'FAtruyopS4husKeSMM2wPGsoTcSpH8X2fhLtRYQUywKFr9mtN5',
+        access_token_key: req.body.token,
+        access_token_secret: req.body.secret
+    });
 
     var query = req.params.query
     client.get('search/tweets', {q: query}, function(error, tweets, response) {
