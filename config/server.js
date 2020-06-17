@@ -18,7 +18,6 @@ app.use(function(req,res,next){
 
 consign().include('./src/route')
           .then('./src/controller')
-          .then('./src/repository')
           .into(app);
 
 module.exports = app;
